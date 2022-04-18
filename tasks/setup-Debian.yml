@@ -1,4 +1,24 @@
 ---
+- name: Add Postgres apt key.
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+  when: postgresql_enable_debian_repo
+
+- name: Add Postgres repositories for Postgresql.
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items:
+    - "deb http://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main"
+  when: postgresql_enable_debian_repo
+  register: postgres_repo
+
+- name: Update apt cache if repo was added.
+  apt: update_cache=yes
+  when: postgres_repo.changed
+  tags: ['skip_ansible_lint']
+
 - name: Ensure PostgreSQL Python libraries are installed.
   apt:
     name: "{{ postgresql_python_library }}"
