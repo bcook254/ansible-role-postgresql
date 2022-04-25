@@ -1,17 +1,13 @@
 ---
-- name: Add Postgres apt key.
+- name: Add official PostgreSQL apt key.
   apt_key:
     url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
     state: present
-  when: postgresql_enable_debian_repo
 
-- name: Add Postgres repositories for Postgresql.
+- name: Add official PostgreSQL repository.
   apt_repository:
-    repo: "{{ item }}"
+    repo: "deb http://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main"
     state: present
-  with_items:
-    - "deb http://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main"
-  when: postgresql_enable_debian_repo
   register: postgres_repo
 
 - name: Update apt cache if repo was added.
