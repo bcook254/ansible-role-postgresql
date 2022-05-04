@@ -1,19 +1,23 @@
 ---
-- name: Ensure PostgreSQL users are configured correctly.
-  postgresql_user:
-    name: "{{ item.name }}"
-    password: "{{ item.password | default(omit) }}"
-    encrypted: "{{ item.encrypted | default(omit) }}"
-    priv: "{{ item.priv | default(omit) }}"
-    role_attr_flags: "{{ item.role_attr_flags | default(omit) }}"
-    db: "{{ item.db | default(omit) }}"
+- name: Ensure PostgreSQL privileges are present.
+  postgresql_privs:
+    database: "{{ item.database }}"
+    fail_on_role: "{{ item.fail_on_role | default(omit) }}"
+    grant_option: "{{ item.grant_option | default(omit) }}"
+    objs: "{{ item.objs | default(omit) }}"
     login_host: "{{ item.login_host | default('localhost') }}"
     login_password: "{{ item.login_password | default(omit) }}"
     login_user: "{{ item.login_user | default(postgresql_user) }}"
     login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
     port: "{{ item.port | default(omit) }}"
+    privs: "{{ item.privs | default(omit) }}"
+    roles: "{{ item.roles }}"
+    schema: "{{ item.schema | default(omit) }}"
     state: "{{ item.state | default('present') }}"
-  with_items: "{{ postgresql_users }}"
+    target_roles: "{{ item.target_roles }}"
+    type: "{{ item.type | default(omit) }}"
+    usage_on_types: "{{ item.usage_on_type | default(omit) }}"
+  with_items: "{{ postgresql_privs }}"
   no_log: "{{ postgres_users_no_log }}"
   become: true
   become_user: "{{ postgresql_user }}"
