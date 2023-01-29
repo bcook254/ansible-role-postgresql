@@ -10,3 +10,4 @@ __postgresql_packages:
   - libpq-dev
 # Debian 10 uses Python 3 by default.
 postgresql_python_library: python3-psycopg2
+apt_keyring_dir: "/etc/apt/keyrings"

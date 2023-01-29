@@ -1,12 +1,13 @@
 ---
 - name: Add official PostgreSQL apt key.
-  apt_key:
-    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+  get_url:
+    src: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    dest: "{{ apt_keyring_dir }}/pgdg.asc"
     state: present
 
 - name: Add official PostgreSQL repository.
   apt_repository:
-    repo: "deb http://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main"
+    repo: "deb [signed-by={{ apt_keyring_dir }}/pgdg.asc] http://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main"
     state: present
   register: postgres_repo
 
