@@ -17,14 +17,6 @@ No special requirements; note that this role requires root access, so either run
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    postgresql_enablerepo: ""
-
-(RHEL/CentOS only) You can set a repo to use for the PostgreSQL installation by passing it in here.
-
-    postgresql_enable_debian_repo: false
-
-(Debian/Ubuntu only) You can enable the PostgreSQL Debian repository here.
-
     postgresql_restarted_state: "restarted"
 
 Set the state of the service when configuration changes are made. Recommended values are `restarted` or `reloaded`.
