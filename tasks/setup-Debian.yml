@@ -12,9 +12,9 @@
   register: postgres_repo
 
 - name: Update apt cache if repo was added.
-  apt: update_cache=yes
+  apt:
+    update_cache: true
   when: postgres_repo.changed
-  tags: ['skip_ansible_lint']
 
 - name: Ensure PostgreSQL Python libraries are installed.
   apt:
@@ -27,7 +27,9 @@
     state: present
 
 - name: Ensure all configured locales are present.
-  locale_gen: "name={{ item }} state=present"
+  locale_gen:
+    name: "{{ item }}"
+    state: present
   with_items: "{{ postgresql_locales }}"
   register: locale_gen_result
 
