@@ -1,12 +1,12 @@
 # Ansible Role: PostgreSQL
 
-[![CI](https://github.com/geerlingguy/ansible-role-postgresql/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-postgresql/actions?query=workflow%3ACI)
-
 Installs and configures PostgreSQL server on RHEL/CentOS or Debian/Ubuntu servers.
 
 ## Requirements
 
-
+Permission to:
+  - Install packages
+  - Create or modify required directories
 
 ## Role Variables
 
@@ -124,11 +124,11 @@ None.
 ## Example Playbook
 
     - hosts: database
-      become: yes
+      become: true
       vars_files:
         - vars/main.yml
       roles:
-        - geerlingguy.postgresql
+        - bcook254.postgresql
 
 *Inside `vars/main.yml`*:
 
@@ -144,4 +144,4 @@ MIT / BSD
 
 ## Author Information
 
-This role was created in 2016 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+This role was created in 2023 by Benjamin Cook.
