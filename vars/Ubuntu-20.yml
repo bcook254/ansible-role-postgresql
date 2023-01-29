@@ -7,6 +7,5 @@ __postgresql_daemon: "postgresql@{{ postgresql_version }}-main"
 __postgresql_packages:
   - postgresql-{{ postgresql_version }}
   - postgresql-contrib-{{ postgresql_version }}
-  - libpq-dev
 postgresql_python_library: python3-psycopg2
 apt_keyring_dir: "/etc/apt/keyrings"

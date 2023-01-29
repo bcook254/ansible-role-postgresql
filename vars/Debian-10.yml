@@ -7,7 +7,6 @@ __postgresql_daemon: "postgresql@{{ postgresql_version }}-main"
 __postgresql_packages:
   - postgresql-{{ postgresql_version }}
   - postgresql-contrib-{{ postgresql_version }}
-  - libpq-dev
 # Debian 10 uses Python 3 by default.
 postgresql_python_library: python3-psycopg2
 apt_keyring_dir: "/etc/apt/keyrings"
