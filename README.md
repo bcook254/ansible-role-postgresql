@@ -6,16 +6,15 @@ Installs and configures PostgreSQL server on RHEL/CentOS or Debian/Ubuntu server
 
 ## Requirements
 
-No special requirements; note that this role requires root access, so either run it in a playbook with a global `become: yes`, or invoke the role in your playbook like:
 
-    - hosts: database
-      roles:
-        - role: geerlingguy.postgresql
-          become: yes
 
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
+
+    postgresql_version: "14"
+
+The version of postgresql to install. Default value changes based on operating system version.
 
     postgresql_restarted_state: "restarted"
 
