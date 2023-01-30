@@ -151,4 +151,4 @@ MIT / BSD
 
 ## Author Information
 
-This role was created in 2023 by Benjamin Cook.
+This role was created in 2023 by Benjamin Cook, based on [geerlingguy/ansible-role-postgresql](https://github.com/geerlingguy/ansible-role-postgresql).
