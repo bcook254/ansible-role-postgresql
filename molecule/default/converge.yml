@@ -27,7 +27,7 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - role: geerlingguy.postgresql
+    - role: bcook254.postgresql
 
   post_tasks:
     - name: Verify postgres is running.
