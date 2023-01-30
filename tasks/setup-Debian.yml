@@ -1,4 +1,10 @@
 ---
+- name: Ensure apt_keyring_dir exists.
+  file:
+    state: directory
+    path: "{{ apt_keyring_dir }}"
+    mode: 0755
+
 - name: Add official PostgreSQL apt key.
   get_url:
     src: https://www.postgresql.org/media/keys/ACCC4CF8.asc
