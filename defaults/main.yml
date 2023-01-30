@@ -65,5 +65,8 @@ postgresql_users: []
 #   port: # defaults to not set
 #   state: # defaults to 'present'
 
+# Privileges to ensure are granted.
+postgresql_privs: []
+
 # Whether to output user data when managing users.
 postgres_users_no_log: true

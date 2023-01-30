@@ -4,6 +4,9 @@ Installs and configures PostgreSQL server on RHEL/CentOS or Debian/Ubuntu server
 
 ## Requirements
 
+Collections:
+  - [community.postgresql (>=2.3.1)](https://galaxy.ansible.com/community/postgresql)
+
 Permission to:
   - Install packages
   - Create or modify required directories
@@ -103,6 +106,10 @@ A list of databases to ensure exist on the server. Only the `name` is required; 
         state: # defaults to 'present'
 
 A list of users to ensure exist on the server. Only the `name` is required; all other properties are optional.
+
+    postgresql_privs: []
+
+A list of privileges to ensure are granted on the server.
 
     postgres_users_no_log: true
 
