@@ -7,9 +7,8 @@
 
 - name: Add official PostgreSQL apt key.
   get_url:
-    src: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
     dest: "{{ apt_keyring_dir }}/pgdg.asc"
-    state: present
 
 - name: Add official PostgreSQL repository.
   apt_repository:
